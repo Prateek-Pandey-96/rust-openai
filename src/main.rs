@@ -15,18 +15,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
         .unwrap_or_else(|_| "OPENAI_API_KEY".to_string());
 
     // Get the appropriate solver for the question type
-    let solver = SolverProvider::get_solver(
-        QuestionType::EquationSolver,
-        &openai_key,
-        "8x+5=-27+88"
-    );
-
-    // Execute the solver and get the response
+    let solver = SolverProvider::get_solver(QuestionType::EquationSolver, &openai_key, "8x+5=53");
     let response = solver.execute().await?;
-    println!("{:?}", response);
-    
-    // Print the formatted response
+    // println!("{:?}", response);
     solver.print_formatted_response(&response);
 
+    let solver = SolverProvider::get_solver(QuestionType::EventInfo, &openai_key, "Ram and Shyam are going to the party in Mumbai.");
+    let response = solver.execute().await?;
+    // println!("{:?}", response);
+    solver.print_formatted_response(&response);
     Ok(())
 }

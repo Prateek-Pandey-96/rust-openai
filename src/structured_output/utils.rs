@@ -3,7 +3,8 @@ use reqwest::Client;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum QuestionType {
-    EquationSolver
+    EquationSolver,
+    EventInfo
 }
 
 pub static HTTP_CLIENT: Lazy<Client> = Lazy::new(|| {
