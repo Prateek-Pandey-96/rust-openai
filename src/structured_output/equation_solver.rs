@@ -2,7 +2,7 @@ use std::error::Error;
 use async_trait::async_trait;
 use serde_json::{json, Value};
 use crate::structured_output::traits::{Solver};
-use crate::structured_output::utils;
+use crate::utils;
 
 pub struct EquationSolver {
     api_key: String,

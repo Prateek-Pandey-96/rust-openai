@@ -2,7 +2,7 @@ use std::error::Error;
 use async_trait::async_trait;
 use serde_json::{json, Value};
 use crate::structured_output::traits::Solver;
-use crate::structured_output::utils;
+use crate::utils::HTTP_CLIENT;
 
 pub struct EventInfo {
     api_key: String,
@@ -68,7 +68,7 @@ impl Solver for EventInfo {
             }
         });
 
-        let response = utils::HTTP_CLIENT
+        let response = HTTP_CLIENT
             .post("https://api.openai.com/v1/responses")
             .bearer_auth(&self.api_key)
             .json(&payload)

@@ -7,6 +7,10 @@ pub enum QuestionType {
     EventInfo
 }
 
+pub enum CallerType{
+    Weather,
+}
+
 pub static HTTP_CLIENT: Lazy<Client> = Lazy::new(|| {
     Client::builder()
         .pool_max_idle_per_host(100)

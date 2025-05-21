@@ -1,7 +1,7 @@
 use crate::structured_output::traits::Solver;
 use crate::structured_output::equation_solver::EquationSolver;
 use crate::structured_output::event_info::EventInfo;
-use super::utils::QuestionType;
+use crate::utils::QuestionType;
 
 pub struct SolverProvider;
 
