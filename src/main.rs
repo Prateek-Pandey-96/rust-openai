@@ -1,5 +1,6 @@
 use std::env;
 use dotenv::dotenv;
+use crate::fn_callng_wt_tools::fn_calling::fn_calling;
 use crate::function_calling::provider::CallerProvider;
 use crate::function_calling::traits::Caller;
 use crate::function_calling::weather_caller;
@@ -10,6 +11,7 @@ use crate::utils::{CallerType, QuestionType};
 mod structured_output;
 mod function_calling;
 mod utils;
+mod fn_callng_wt_tools;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
@@ -31,10 +33,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     // println!("{:?}", response);
     // solver.print_formatted_response(&response);
 
-    let caller = CallerProvider::get_caller(CallerType::Weather, &openai_key);
-    let query = "What is the weather like in Bengaluru today?";
-    let resp = caller.process_function_calling(query).await?;
-    println!("{:?}", resp.get("temperature").unwrap().as_f64().unwrap());
+    // let caller = CallerProvider::get_caller(CallerType::Weather, &openai_key);
+    // let query = "What is the weather like in Bengaluru today?";
+    // let resp = caller.process_function_calling(query).await?;
+    // println!("{:?}", resp.get("temperature").unwrap().as_f64().unwrap());
+    
+    let _ = fn_calling().await;
 
     Ok(())
 }
