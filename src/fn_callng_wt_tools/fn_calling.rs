@@ -1,7 +1,7 @@
 use serde_json::json;
 use crate::fn_callng_wt_tools::executor::executor;
 use crate::fn_callng_wt_tools::open_ai_client::OpenAiClient;
-use crate::fn_callng_wt_tools::tools::{get_addition_tool, get_weather_tool};
+use crate::fn_callng_wt_tools::tools::{get_addition_tool, get_event_info_tool, get_user_info_tool, get_weather_tool};
 
 pub async fn fn_calling() -> Result<(), Box<dyn std::error::Error>> {
 
@@ -12,6 +12,8 @@ pub async fn fn_calling() -> Result<(), Box<dyn std::error::Error>> {
     let tools = [
         get_weather_tool(),
         get_addition_tool(),
+        get_user_info_tool(),
+        get_event_info_tool()
     ];
 
     let system_msg = json!({
@@ -20,7 +22,9 @@ pub async fn fn_calling() -> Result<(), Box<dyn std::error::Error>> {
     });
     let user_msg = json!({
         "role": "user",
-        "content": "What's the weather like in New York and what's 15 + 27?"
+        "content": "What's the weather like in New York? \
+        Prateek who is a software engineer is going to a party today in Mumbai?\
+        What is 12 + 27?"
     });
     let messages = [
         system_msg, user_msg,

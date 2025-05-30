@@ -47,3 +47,51 @@ pub fn get_addition_tool() -> Value {
         }
     })
 }
+
+pub fn get_user_info_tool() -> Value {
+    json!({
+        "type": "function",
+        "function":{
+            "name": "get_user_info",
+            "description": "Return the user info",
+            "parameters": {
+                "type":"object",
+                "properties":{
+                    "name":{
+                        "type":"string",
+                        "description":"The user name"
+                    },
+                    "designation":{
+                        "type":"string",
+                        "description":"The user designation"
+                    }
+                }
+            },
+            "required": ["name", "designation"]
+        }
+    })
+}
+
+pub fn get_event_info_tool() -> Value {
+    json!({
+        "type": "function",
+        "function":{
+            "name": "get_event_info",
+            "description": "Return the event info",
+            "parameters": {
+                "type":"object",
+                "properties":{
+                    "name":{
+                        "type":"string",
+                        "description":"The event name"
+                    },
+                    "location":{
+                        "type":"string",
+                        "description":"The event location"
+                    }
+                }
+            },
+            "required": ["name", "location"]
+        }
+    })
+}
